@@ -100,16 +100,16 @@ int		best_place(t_data **data)
 int		solve(t_data **data)
 {
 	point_map(data);
-	if (best_place(data) == -1)
+	if (best_place(data) != -1)
 	{
-		ft_printf("0 0\n");
-		return (0);
+		(*data)->result_height = (*data)->result_height - (*data)->start_height;
+		(*data)->result_width = (*data)->result_width - (*data)->start_width;
+		fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, (*data)->result_width);
+		ft_printf("%d %d\n", (*data)->result_height, (*data)->result_width);
+		(*data)->result_height = 0;
+		(*data)->result_width = 0;
+		return (1);
 	}
-    (*data)->result_height = (*data)->result_height - (*data)->start_height;
-	(*data)->result_width = (*data)->result_width - (*data)->start_width;
-	fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, (*data)->result_width);
-	ft_printf("%d %d\n", (*data)->result_height, (*data)->result_width);
-    (*data)->result_height = 0;
-    (*data)->result_width = 0;
-	return (1);
+	ft_printf("0 0\n");
+	return (0);
 }

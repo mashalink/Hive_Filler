@@ -94,7 +94,7 @@ static int save_new_piece(t_data **data, int start_y)
         y_index++;
         start_y++;
     }
-    // 	free_piece(data);
+    free_piece(data, (*data)->piece_height);
 	(*data)->piece = new_piece;
     return (1);
 }

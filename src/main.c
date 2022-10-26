@@ -30,8 +30,10 @@ int main(void)
     while (read_map(&data) && read_piece(&data))
     {
             solve(&data);
-            free_piece(&data->piece, data->real_height);
+            free_piece(&data, data->real_height);
+            fd_printf(data->fd_log, "DONE\n");
             free_map(&data);
+            fd_printf(data->fd_log, "DONE3\n");
     }
     return (free_data(&data, 0));
 }
