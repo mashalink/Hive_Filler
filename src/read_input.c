@@ -6,7 +6,7 @@
 /*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:37:15 by mlink             #+#    #+#             */
-/*   Updated: 2022/11/01 11:03:45 by mlink            ###   ########.fr       */
+/*   Updated: 2022/11/01 11:21:00 by mlink            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static int	save_line(t_data **data)
 	}
 	if (height == (*data)->map_height)
 		return (1);
+	return (0);
 }
 
 /*
