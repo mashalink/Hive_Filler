@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 10:35:52 by mlink             #+#    #+#             */
+/*   Updated: 2022/11/01 10:52:50 by mlink            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/filler.h"
 
 /*
 ** returns the number of points received when placing a piece
 */
 
-int		count_score(t_data **data, int check_x, int check_y)
+int	count_score(t_data **data, int check_x, int check_y)
 {
 	int	score;
-	int x_index;
-	int y_index;
+	int	x_index;
+	int	y_index;
 
 	y_index = 0;
 	score = 0;
@@ -31,7 +43,7 @@ int		count_score(t_data **data, int check_x, int check_y)
 ** checks if piece can be placed in spot of given coordinates.
 */
 
-int		check_place(t_data **data, int check_x, int check_y)
+int	check_place(t_data **data, int check_x, int check_y)
 {
 	int	x_index;
 	int	y_index;
@@ -46,15 +58,14 @@ int		check_place(t_data **data, int check_x, int check_y)
 		{
 			if ((*data)->piece[y_index][x_index] == '*')
 			{
-				if (check_y + y_index >= (*data)->map_height || check_x + x_index >= (*data)->map_width \
-				|| (*data)->map[check_y + y_index][check_x + x_index] == -1)
+				if (check_y + y_index >= (*data)->map_height || \
+				check_x + x_index >= (*data)->map_width || \
+				(*data)->map[check_y + y_index][check_x + x_index] == -1)
 					return (-1);
 				if ((*data)->map[check_y + y_index][check_x + x_index] == -2)
 					touch++;
 			}
 		}
-		if (touch > 1)
-			break;
 	}
 	if (touch != 1)
 		return (-1);
@@ -79,7 +90,7 @@ void	found_max(t_data **data, int *max_score, int x_index, int y_index)
 ** chooses the place with the highest points
 */
 
-int		best_place(t_data **data)
+int	best_place(t_data **data)
 {
 	int	max_score;
 	int	x_index;
@@ -97,14 +108,15 @@ int		best_place(t_data **data)
 	return (max_score);
 }
 
-int		solve(t_data **data)
+int	solve(t_data **data)
 {
 	point_map(data);
 	if (best_place(data) != -1)
 	{
 		(*data)->result_height = (*data)->result_height - (*data)->start_height;
 		(*data)->result_width = (*data)->result_width - (*data)->start_width;
-		fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, (*data)->result_width);
+		fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, \
+		(*data)->result_width);
 		ft_printf("%d %d\n", (*data)->result_height, (*data)->result_width);
 		(*data)->result_height = 0;
 		(*data)->result_width = 0;

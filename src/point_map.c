@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   point_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 10:37:08 by mlink             #+#    #+#             */
+/*   Updated: 2022/11/01 11:05:38 by mlink            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/filler.h"
 
 /*
 ** checks if there is an integer 'check' anywhere around a point (x,y)
 */
 
-int		is_around(t_data **data, int x, int y, int check)
+int	is_around(t_data **data, int x, int y, int check)
 {
 	if (x + 1 < (*data)->map_width && (*data)->map[y][x + 1] == check)
 		return (1);
@@ -13,7 +25,8 @@ int		is_around(t_data **data, int x, int y, int check)
 		return (2);
 	if (y + 1 < (*data)->map_height && (*data)->map[y + 1][x] == check)
 		return (3);
-	if (x - 1 >= 0 && y + 1 < (*data)->map_height && (*data)->map[y + 1][x - 1] == check)
+	if (x - 1 >= 0 && y + 1 < (*data)->map_height && \
+	(*data)->map[y + 1][x - 1] == check)
 		return (4);
 	if (x - 1 >= 0 && (*data)->map[y][x - 1] == check)
 		return (5);
@@ -21,11 +34,11 @@ int		is_around(t_data **data, int x, int y, int check)
 		return (6);
 	if (y - 1 >= 0 && (*data)->map[y - 1][x] == check)
 		return (7);
-	if (x + 1 < (*data)->map_width && y - 1 >= 0 && (*data)->map[y - 1][x + 1] == check)
+	if (x + 1 < (*data)->map_width && y - 1 >= 0 && \
+	(*data)->map[y - 1][x + 1] == check)
 		return (8);
 	return (0);
 }
-
 
 /*
 ** goes the map and gives points for spots
@@ -35,11 +48,12 @@ int		is_around(t_data **data, int x, int y, int check)
 void	count_point_map(t_data **data)
 {
 	int	x_index;
-	int y_index;
-	int points;
+	int	y_index;
+	int	points;
 
 	points = 100;
-	while (100 - points < (*data)->map_width || 100 - points < (*data)->map_height)
+	while (100 - points < (*data)->map_width || \
+	100 - points < (*data)->map_height)
 	{
 		y_index = 0;
 		while (y_index < (*data)->map_height)
@@ -64,10 +78,10 @@ void	count_point_map(t_data **data)
 ** to the highest value of pointmap
 */
 
-void		point_map(t_data **data)
+void	point_map(t_data **data)
 {
 	int	x_index;
-	int y_index;
+	int	y_index;
 
 	y_index = 0;
 	while (y_index < (*data)->map_height)
