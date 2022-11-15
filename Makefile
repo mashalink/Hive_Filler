@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mlink <mlink@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/01 10:37:21 by mlink             #+#    #+#              #
+#    Updated: 2022/11/01 11:50:21 by mlink            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=	mlink.filler
 
 SRC		=	main.c	get.c	read_input.c\
@@ -37,6 +49,10 @@ clean:
 	@echo "	$(GREEN)<<$(RESET)$(YELLOW)all $(NAME) .o files $(GREEN)>>$(RESET)"
 
 fclean:
+	@rm -rf filler.log
+	@echo "	$(GREEN)<<$(RESET)$(YELLOW)filler.log deleted$(GREEN)>>$(RESET)"
+	@rm -rf filler.trace
+	@echo "	$(GREEN)<<$(RESET)$(YELLOW)filler.trace deleted$(GREEN)>>$(RESET)"
 	@/bin/rm -rf $(OBJ_DIR)
 	@/bin/rm -f $(NAME)
 	@make -C libft fclean
@@ -45,9 +61,7 @@ fclean:
 re: fclean all
 
 norm:
-	@ make norm -C libft/
-	@ norminette $(SRC_DIR) includes
+	@norminette includes libft src
 	# make norm | grep Error
-	# cat -e author
 
 .PHONY: all clean fclean re norm

@@ -6,7 +6,7 @@
 /*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:37:00 by mlink             #+#    #+#             */
-/*   Updated: 2022/11/01 11:09:32 by mlink            ###   ########.fr       */
+/*   Updated: 2022/11/08 11:18:32 by mlink            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 /*
 ** finds player information
+*/
+
+/*
+** filler.log:
+** fd_printf((*data)->fd_log, "My = '%c'\n", (*data)->player_id); 
+/ before ft_strdel() and return(1)
+** if "-p1 ./mlink.filler" my id will be 'O' else 'X' 
 */
 
 int	get_player(t_data **data)
@@ -35,7 +42,6 @@ int	get_player(t_data **data)
 				(*data)->player_id = 'X';
 				(*data)->opponent_id = 'O';
 			}
-			fd_printf((*data)->fd_log, "My = '-2'\n");
 			ft_strdel(&line);
 			return (1);
 		}
@@ -45,7 +51,7 @@ int	get_player(t_data **data)
 }
 
 /*
-** saves  map's sizes or piece's sizes.
+** saves sizes and frees the line
 */
 
 void	get_size(char **line, int *height, int *widht)

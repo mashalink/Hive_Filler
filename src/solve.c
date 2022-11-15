@@ -6,7 +6,7 @@
 /*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:35:52 by mlink             #+#    #+#             */
-/*   Updated: 2022/11/01 10:52:50 by mlink            ###   ########.fr       */
+/*   Updated: 2022/11/15 10:42:25 by mlink            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ int	check_place(t_data **data, int check_x, int check_y)
 	return (count_score(data, check_x, check_y));
 }
 
+/*
+** saves if founded better result
+*/
+
 void	found_max(t_data **data, int *max_score, int x_index, int y_index)
 {
 	int		score;
@@ -88,6 +92,13 @@ void	found_max(t_data **data, int *max_score, int x_index, int y_index)
 /*
 ** finds all possible places to put and 
 ** chooses the place with the highest points
+** returns max_score
+*/
+
+/*
+**	print map_scoree in filler.log:
+**	fd_printf((*data)->fd_log, "MAX_score = %d\n", max_score); \
+//after while loop
 */
 
 int	best_place(t_data **data)
@@ -104,9 +115,18 @@ int	best_place(t_data **data)
 		while (++x_index < (*data)->map_width)
 			found_max(data, &max_score, x_index, y_index);
 	}
-	fd_printf((*data)->fd_log, "MAX_score = %d\n", max_score);
 	return (max_score);
 }
+
+/*
+** finds the best position for the piece and print result to standard output
+*/
+
+/*
+**	print result in filler.log:
+**	fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, \
+	(*data)->result_width); // before zeroing (*data)->result_height.
+*/
 
 int	solve(t_data **data)
 {
@@ -115,8 +135,6 @@ int	solve(t_data **data)
 	{
 		(*data)->result_height = (*data)->result_height - (*data)->start_height;
 		(*data)->result_width = (*data)->result_width - (*data)->start_width;
-		fd_printf((*data)->fd_log, "%d %d\n", (*data)->result_height, \
-		(*data)->result_width);
 		ft_printf("%d %d\n", (*data)->result_height, (*data)->result_width);
 		(*data)->result_height = 0;
 		(*data)->result_width = 0;

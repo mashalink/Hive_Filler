@@ -6,7 +6,7 @@
 /*   By: mlink <mlink@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:37:08 by mlink             #+#    #+#             */
-/*   Updated: 2022/11/01 11:05:38 by mlink            ###   ########.fr       */
+/*   Updated: 2022/11/08 11:17:56 by mlink            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int	is_around(t_data **data, int x, int y, int check)
 ** the farther from the enemy the less
 */
 
+/*
+**	print point_map in filler.log:
+**	print_map(data); //at the end
+*/
+
 void	count_point_map(t_data **data)
 {
 	int	x_index;
@@ -70,7 +75,6 @@ void	count_point_map(t_data **data)
 		}
 		points--;
 	}
-	print_map(data);
 }
 
 /*
