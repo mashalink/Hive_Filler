@@ -6,7 +6,7 @@
 #    By: mlink <mlink@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 10:37:21 by mlink             #+#    #+#              #
-#    Updated: 2022/11/01 11:50:21 by mlink            ###   ########.fr        #
+#    Updated: 2023/02/04 14:34:13 by mlink            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,9 @@ fclean:
 	@echo "	$(GREEN)<<$(RESET)$(YELLOW)filler.trace deleted$(GREEN)>>$(RESET)"
 	@/bin/rm -rf $(OBJ_DIR)
 	@/bin/rm -f $(NAME)
+	@/bin/rm -f resources/trace_filler
+	@/bin/rm -f resources/filler.log
+	@/bin/rm -f resources/filler.trace
 	@make -C libft fclean
 	@echo "	$(GREEN)<<$(RESET)$(YELLOW)$(NAME) deleted$(GREEN)>>$(RESET)"
 
@@ -62,6 +65,5 @@ re: fclean all
 
 norm:
 	@norminette includes libft src
-	# make norm | grep Error
 
 .PHONY: all clean fclean re norm
