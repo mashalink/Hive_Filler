@@ -13,10 +13,10 @@ highest heat value to be the final spot, where i place the piece.
 git clone https://github.com/mashalink/filler.git
 cd filler
 make all
-./filler_vm -f resources/maps/map00 -p1 ./mlink.filler -p2 resources/players/superjeannot.filler
-		(also you can use maps/map01 or maps/map02)
-		(also you caan use players/abanlin.filler , players/carli.filler , players/champely.filler , 
-		players/grati.filler or  players/hcao.filler)
+./resources/filler_vm -f resources/maps/map00 -p1 ./mlink.filler -p2 resources/players/superjeannot.filler
+	(also you can use maps/map01 or maps/map02)
+	(also you caan use players/abanlin.filler , players/carli.filler , players/champely.filler , 
+	players/grati.filler or  players/hcao.filler)
 
 ## Script
 
