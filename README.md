@@ -33,3 +33,6 @@ chmod 755 test_filler.sh
 ./test_filler.sh
 
 You will have the trace_filler file where will be  all results.
+
+Grade 
+101 / 100
