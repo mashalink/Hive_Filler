@@ -13,7 +13,7 @@ do
         echo "against $player" >> trace_filler
         for i in "${turns[@]}"
         do
-            run='./resources/filler_vm -p1 ../'
+            run='./resources/filler_vm -q -p1 ../'
             run+=$name
             run+='filler -v -f resources/maps/'
             run+=$map
